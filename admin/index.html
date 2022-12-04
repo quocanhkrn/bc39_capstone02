@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles/dist/style.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ADMINISTRATIVE AREA</h1>
+      <button
+        type="button"
+        class="btn btn-primary w-100 mb-3"
+        id="new-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#productModal"
+        onclick="initializeNewForm()">
+        <i class="fa-solid fa-plus me-2"></i>ADD NEW PRODUCT
+      </button>
+      <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="productModalLabel"></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" onsubmit="addNewProduct()" id="form">
+              <div class="modal-body">
+                <input type="text" class="form-control mb-3" id="name" placeholder="Name" required />
+                <input type="text" class="form-control mb-3" id="type" placeholder="Type" required />
+                <input type="number" class="form-control mb-3" id="price" placeholder="Price" required />
+                <input type="text" class="form-control mb-3" id="description" placeholder="Description" required />
+                <input type="url" class="form-control mb-3" id="image" placeholder="Image URL" required />
+                <div class="mb-3">
+                  <label class="form-label">Specifications</label>
+                  <input type="number" step="0.01" class="form-control mb-2" id="screen" placeholder="Screen size" required />
+                  <input type="text" class="form-control mb-2" id="back-camera" placeholder="Back camera" required />
+                  <input type="text" class="form-control mb-2" id="front-camera" placeholder="Front camera" required />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-btn">Close</button>
+                <button type="submit" class="btn btn-primary" id="add-new-btn">Add</button>
+                <button type="submit" class="btn btn-primary" id="save-update-btn">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="product-table"></tbody>
+      </table>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.2.0/axios.min.js"
+      integrity="sha512-QIsQNDM8hG/1Z3If8Zh2BcpQ79KL3ra1wVMVSliBjQfFMlWMA3tCSe6ZfTK9rw2Ag4hOQ4P5ZhQd4nQl2dMeog=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <script src="scripts/product-service.js"></script>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>

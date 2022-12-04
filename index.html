@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles/dist/css-reset.css" />
+    <link rel="stylesheet" href="styles/dist/style.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container p-5">
+      <div class="header row mx-0 mb-3">
+        <div class="search col-9 col-lg-10 d-flex align-items-center p-0 pe-2">
+          <h1 class="me-2">Filter</h1>
+          <select class="form-select" id="type-select" onchange="typeSearch()">
+            <option value="All">All</option>
+          </select>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary col-3 col-lg-2 position-relative"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#cart-detail"
+          aria-controls="cart-detail">
+          <i class="fa-solid fa-cart-shopping"></i>
+          CART
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-quantity"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="cart-detail" aria-labelledby="cart-detailLabel">
+          <div class="offcanvas-header">
+            <h1 class="offcanvas-title" id="cart-detailLabel">Your Cart</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="btn-clear d-flex justify-content-end">
+              <button type="button" class="btn btn-danger mb-3 w-auto" onclick="clearCart()">
+                <i class="fa-solid fa-ban me-2"></i>Clear your cart
+              </button>
+            </div>
+            <div class="cart-products"></div>
+            <div class="payment d-flex">
+              <button type="button" class="btn btn-primary flex-grow-1" onclick="clearCart()">
+                <i class="fa-solid fa-receipt me-2"></i>Purchase
+              </button>
+              <div class="total ms-3 text-end">
+                <h1>TOTAL</h1>
+                <p id="cart-total"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-list row g-3"></div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.2.0/axios.min.js"
+      integrity="sha512-QIsQNDM8hG/1Z3If8Zh2BcpQ79KL3ra1wVMVSliBjQfFMlWMA3tCSe6ZfTK9rw2Ag4hOQ4P5ZhQd4nQl2dMeog=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <script src="scripts/product-service.js"></script>
+    <script src="scripts/product.js"></script>
+    <script src="scripts/cart.js"></script>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
