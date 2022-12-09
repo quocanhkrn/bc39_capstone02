@@ -1,11 +1,14 @@
+// GLOBAL FUNCTION
 DOM = (id) => document.getElementById(id);
 
+// DISPLAY PRODUCT LIST
 let displayProductList = (list) => {
   document.querySelector(".product-list").innerHTML = "";
   list.forEach((product) => {
     let price = parseInt(product.price);
     price = price.toLocaleString("en-US");
-    document.querySelector(".product-list").innerHTML += `<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+    document.querySelector(".product-list").innerHTML += `
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
       <div class="product p-3">
         <div class="product__image mb-3 py-2">
           <img class="img-fluid" src="${product.image}" alt="" />
@@ -28,6 +31,7 @@ let displayProductList = (list) => {
   });
 };
 
+// PRODUCT TYPE SEARCH
 let typeSearch = () => {
   let value = DOM("type-select").value;
   console.log(value);
@@ -56,6 +60,7 @@ let typeSearch = () => {
   }
 };
 
+// CART OPTIONS
 let incQuantity = (index) => {
   cart.incQuantity(index);
 };
@@ -68,6 +73,7 @@ let removeProduct = (index) => {
   cart.removeProduct(index);
 };
 
+// MAIN
 let productService = new ProductService();
 let cart = new Cart();
 if (localStorage.getItem("cart")) {

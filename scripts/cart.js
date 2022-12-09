@@ -9,10 +9,11 @@ function Cart() {
       .then((res) => {
         let isInCart = false;
         let indexInCart = 0;
-        for (let index in this.list) {
+        loop: for (let index in this.list) {
           if (this.list[index].id === res.id) {
             isInCart = true;
             indexInCart = index;
+            break loop;
           }
         }
         if (isInCart) {
@@ -20,14 +21,12 @@ function Cart() {
           let updatedProduct = new productInCart(res.id, res.name, res.price, quantity, res.image);
           updatedProduct.getTotal();
           this.list[indexInCart] = updatedProduct;
-          this.updateLocalStorage();
         } else {
           let newProduct = new productInCart(res.id, res.name, res.price, 1, res.image);
           newProduct.getTotal();
           this.list.push(newProduct);
-          this.updateLocalStorage();
         }
-        this.displayCart();
+        this.updateLocalStorage();
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +37,6 @@ function Cart() {
     this.list[index].quantity++;
     this.list[index].total = this.list[index].price * this.list[index].quantity;
     this.updateLocalStorage();
-    this.displayCart();
   };
 
   this.decQuantity = (index) => {
@@ -48,19 +46,16 @@ function Cart() {
       this.list.splice(index, 1);
     }
     this.updateLocalStorage();
-    this.displayCart();
   };
 
   this.removeProduct = (index) => {
     this.list.splice(index, 1);
     this.updateLocalStorage();
-    this.displayCart();
   };
 
   this.clear = () => {
     this.list = [];
     this.updateLocalStorage();
-    this.displayCart();
   };
 
   this.displayCart = () => {
@@ -92,6 +87,7 @@ function Cart() {
   this.updateLocalStorage = () => {
     let cartJSONString = JSON.stringify(this.list);
     localStorage.setItem("cart", cartJSONString);
+    this.displayCart();
   };
 }
 
