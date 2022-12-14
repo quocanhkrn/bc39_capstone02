@@ -38,6 +38,7 @@ let getList = () => {
 };
 
 let initializeNewForm = () => {
+  DOM("form").reset();
   DOM("productModalLabel").innerHTML = "NEW PRODUCT";
   DOM("add-new-btn").style.display = "block";
   DOM("save-update-btn").style.display = "none";
